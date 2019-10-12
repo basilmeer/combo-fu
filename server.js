@@ -1,0 +1,45 @@
+// Fetch dependencies
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+
+require('dotenv').config({ path: '.env' });
+
+// Fetch routes
+const combos = require('./routes/combos');
+const games = require('./routes/games');
+const platforms = require('./routes/platforms');
+const users = require('./routes/users');
+
+// Fetch db config
+const db = require('./config/db').mongoURI;
+
+// Init app
+const app = express();
+
+// Connect db
+mongoose.connect(db, { useNewUrlParser: true })
+  .then(() => console.log("DB connected"))
+  .catch(err => console.log(err));
+
+// Use middleware
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true
+}
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+
+// Mask the routes
+app.use('/api/combos', combos);
+app.use('/api/games', games);
+app.use('/api/platforms', platforms);
+app.use('/api/users', users);
+
+// Set the port
+const PORT = process.env.port || 5000;
+
+// Listen to the port
+app.listen(PORT, () => console.log(`Running a server at ${PORT}`));

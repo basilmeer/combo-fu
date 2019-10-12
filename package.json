@@ -1,0 +1,34 @@
+{
+  "name": "combo-fu-api",
+  "version": "0.0.1",
+  "description": "The backend for Combo Fu",
+  "main": "index.js",
+  "repository": "https://github.com/basilmeer/combo-fu-api.git",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "server": "nodemon server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\"",
+    "seed:games": "node ./db/seeds/games.js",
+    "seed:platforms": "node ./db/seeds/platforms.js",
+    "seed:users": "node ./db/seeds/users.js"
+  },
+  "author": "Basil Meer",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.10"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
