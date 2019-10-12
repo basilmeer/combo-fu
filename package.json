@@ -1,9 +1,9 @@
 {
-  "name": "combo-fu-api",
+  "name": "combo-fu",
   "version": "0.0.1",
-  "description": "The backend for Combo Fu",
+  "description": "A combo writing app for fighting games. Made with MERN.",
   "main": "index.js",
-  "repository": "https://github.com/basilmeer/combo-fu-api.git",
+  "repository": "https://github.com/basilmeer/combo-fu.git",
   "directories": {
     "doc": "docs",
     "test": "tests"
@@ -12,6 +12,7 @@
     "server": "nodemon server.js",
     "client": "cd client && npm start",
     "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\"",
+    "build:client": "cd client && npm run build",
     "seed:games": "node ./db/seeds/games.js",
     "seed:platforms": "node ./db/seeds/platforms.js",
     "seed:users": "node ./db/seeds/users.js"
