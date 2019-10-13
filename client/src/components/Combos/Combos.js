@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { H1, H2, H5, Button, Classes, Card, Elevation, Dialog, AnchorButton, Intent, FormGroup, InputGroup, TextArea, HTMLSelect } from '@blueprintjs/core';
 
-class Combos extends React.Component {
+import InputDisplay from '../DBFZ/InputDisplay';
+
+class Combos extends Component {
   handleOpen = () => {
     const { dialog } = { ...this.state };
     const currentState = dialog;
@@ -62,7 +64,12 @@ class Combos extends React.Component {
       title: 'Add a new combo',
       onClose: this.handleClose
     },
-    newCombo: {}
+    newCombo: {
+      "title": "",
+      "game": "",
+      "character": "",
+      "combo": ""
+    }
   };
   
   handleAutoFocusChange = this.setState(prevState => ({ autoFocus: !prevState.autoFocus }));
@@ -70,6 +77,11 @@ class Combos extends React.Component {
   handleUsePortalChange = this.setState(prevState => ({ usePortal: !prevState.usePortal }));
   handleEnforceFocusChange = this.setState(prevState => ({ enforceFocus: !prevState.enforceFocus }));
   handleOutsideClickCloseChange = this.setState(prevState => ({ canOutsideClickClose: !prevState.canOutsideClickClose }));
+  
+  /* 
+    TODO:
+      -- Use Hooks and probably remove Blueprint altogether
+  */
   
   handleGameSelectChange = (e) => {
     const { newCombo } = {...this.state};
@@ -82,6 +94,20 @@ class Combos extends React.Component {
     const { newCombo } = {...this.state};
     const currentState = newCombo;
     currentState.character = e.target.value;
+    this.setState({ newCombo: currentState });
+  }
+
+  handleTitleChange = (e) => {
+    const { newCombo } = {...this.state};
+    const currentState = newCombo;
+    currentState.title = e.target.value;
+    this.setState({ newCombo: currentState });
+  }
+
+  handleComboChange = (e) => {
+    const { newCombo } = {...this.state};
+    const currentState = newCombo;
+    currentState.combo = e.target.value;
     this.setState({ newCombo: currentState });
   }
   
@@ -112,7 +138,7 @@ class Combos extends React.Component {
               label="Title"
               labelFor="title-input"
             >
-              <InputGroup id="title-input" type="text" value={this.state.newCombo.title} />
+              <InputGroup id="title-input" type="text" onChange={this.handleTitleChange} value={this.state.newCombo.title} />
             </FormGroup>
             <FormGroup
               helperText="Be sure to select the right game!"
@@ -143,8 +169,11 @@ class Combos extends React.Component {
               label="Combo Input"
               labelFor="text-input"
             >
-              <TextArea id="combo-input" growVertically={true} large={true} fill={true} value={this.state.newCombo.combo} />
+              <TextArea id="combo-input" growVertically={true} large={true} fill={true} onChange={this.handleComboChange} value={this.state.newCombo.combo} />
             </FormGroup>
+            <div className="combo-preview">
+              <InputDisplay input={this.state.newCombo.combo} />
+            </div>
           </div>
           <div className={Classes.DIALOG_FOOTER}>
             <AnchorButton intent={Intent.PRIMARY} href="#">
