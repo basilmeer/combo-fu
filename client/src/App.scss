@@ -46,6 +46,20 @@ body {
   margin-bottom: 2rem;
 }
 
+.cf-combo-string {
+  list-style: none;
+  padding: 0;
+  li {
+    display: inline;
+  }
+}
+
+.command {
+  width: 35px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
 .cf-footer-note {
   font-size: 12px;
   margin-top: 8rem;

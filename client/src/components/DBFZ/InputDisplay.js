@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import UInput from '../../images/dbfz/inputs/8.png';
 import DInput from '../../images/dbfz/inputs/2.png';
@@ -17,52 +17,97 @@ import LInput from '../../images/dbfz/inputs/l.png';
 import MInput from '../../images/dbfz/inputs/m.png';
 import HInput from '../../images/dbfz/inputs/h.png';
 import SInput from '../../images/dbfz/inputs/s.png';
+import FollowUpInput from '../../images/dbfz/inputs/follow_up.png';
 
-const handleInputDisplay = (input) => {
-  switch(input) {
+const handleInputDisplay = (command, index) => {
+  switch(command) {
     case 'u':
-      return <img src={UInput} alt="u" />;
+    case 'U':
+    case '8':
+      return <img key={index} className="command" src={UInput} alt="u" />;
     case 'd':
-      return <img src={DInput} alt="d" />;
+    case 'D':
+    case '2':
+      return <img key={index} className="command" src={DInput} alt="d" />;
     case 'f':
-      return <img src={FInput} alt="f" />;
+    case 'F':
+    case '6':
+      return <img key={index} className="command" src={FInput} alt="f" />;
     case 'b':
-      return <img src={BInput} alt="b" />;
+    case 'B':
+    case '4':
+      return <img key={index} className="command" src={BInput} alt="b" />;
     case 'ub':
-      return <img src={UBInput} alt="ub" />;
+    case 'UB':
+    case '7':
+      return <img key={index} className="command" src={UBInput} alt="ub" />;
     case 'uf':
-      return <img src={UFInput} alt="uf" />;
+    case 'UF':
+    case '9':
+      return <img key={index} className="command" src={UFInput} alt="uf" />;
     case 'db':
-      return <img src={DBInput} alt="db" />;
+    case 'DB':
+    case '1':
+      return <img key={index} className="command" src={DBInput} alt="db" />;
     case 'df':
-      return <img src={DFInput} alt="df" />;
+    case 'DF':
+    case '3':
+      return <img key={index} className="command" src={DFInput} alt="df" />;
     case 'n':
-      return <img src={NInput} alt="n" />;
+    case 'N':
+    case '5':
+      return <img key={index} className="command" src={NInput} alt="n" />;
     case 'qcf':
-      return <img src={QCFInput} alt="qcf" />;
+    case 'QCF':
+    case '236':
+      return <img key={index} className="command" src={QCFInput} alt="qcf" />;
     case 'qcb':
-      return <img src={QCBInput} alt="qcb" />;
+    case 'QCB':
+    case '214':
+      return <img key={index} className="command" src={QCBInput} alt="qcb" />;
     case 'dpf':
-      return <img src={DPFInput} alt="dpf" />;
+    case 'DPF':
+    case '623':
+      return <img key={index} className="command" src={DPFInput} alt="dpf" />;
     case 'dpb':
-      return <img src={DPBInput} alt="dpb" />;
+    case 'DPB':
+    case '421':
+      return <img key={index} className="command" src={DPBInput} alt="dpb" />;
     case 'l':
-      return <img src={LInput} alt="l" />;
+    case 'L':
+      return <img key={index} className="command" src={LInput} alt="l" />;
     case 'm':
-      return <img src={MInput} alt="m" />;
+    case 'M':
+      return <img key={index} className="command" src={MInput} alt="m" />;
     case 'h':
-      return <img src={HInput} alt="h" />;
+    case 'H':
+      return <img key={index} className="command" src={HInput} alt="h" />;
     case 's':
-      return <img src={SInput} alt="s" />;
+    case 'S':
+      return <img key={index} className="command" src={SInput} alt="s" />;
+    case '>':
+        return <img key={index} className="command" src={FollowUpInput} alt="follow up" />;
     default:
-        return <img src={NInput} alt="n" />;
+        return <img key={index} className="command" src={NInput} alt="n" />;
   }
 }
 
-const InputDisplay = ({ input }) => {
-  return(
-    handleInputDisplay(input)
-  )
+// This component will take an input like 2M>M>9M>L>L>2H and return the correct visual inputs
+class InputDisplay extends Component {
+  render() {
+    // let commandList = this.props.input.split('>').join('').split(/([A-Z])/).filter((el) => el !== '');
+    let commandList = this.props.input.split(/([>A-Z])/).filter((el) => el !== '');
+
+    return(
+      <ul className="cf-combo-string">
+        {
+          commandList.map((command, index) => {
+            return <li>{handleInputDisplay(command, index)}</li>;
+          })
+        }
+      </ul>
+    )
+  }
 }
 
 export default InputDisplay;

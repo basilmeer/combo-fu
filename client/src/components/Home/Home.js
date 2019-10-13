@@ -19,14 +19,10 @@ function Home() {
         into arrows and buttons which makes your combos visually easier to comprehend. And if you're someone like me, easier for you yourself to read on the fly too!
       </p>
       <br/>
-      <InputDisplay input="d" />
-      <InputDisplay input="m" />
-      <InputDisplay input="uf" />
-      <InputDisplay input="m" />
-      <InputDisplay input="l" />
-      <InputDisplay input="l" />
-      <InputDisplay input="d" />
-      <InputDisplay input="h" />
+      <p>2M>M>9M>L>L>2H</p>
+      <InputDisplay input="2M>M>9M>L>L>2H" />
+      <br/>
+      <InputDisplay input="2M>M>9M>LL>2H>MLL>2H>9ML>236L" />
     </div>
   );
 }
