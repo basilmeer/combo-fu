@@ -32,22 +32,22 @@ A list of the stuff that's being used in the app.
 * react-scripts (3.0.1)
 
 ## Scripts
-### Start development servers
+#### Start development servers
 ```sh
 npm run dev
 ```
 
-### Run backend server
+#### Run backend server
 ```sh
 npm run server
 ```
 
-### Run client server
+#### Run client server
 ```sh
 npm run client
 ```
 
-### Build (client)
+#### Build (client)
 ```sh
 npm run build:client
 ```
