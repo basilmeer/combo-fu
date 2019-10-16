@@ -8,10 +8,10 @@ const ComboSchema = new Schema({
     type: String,
     required: true
   },
-  character: {
-    type: String,
-    required: true
-  },
+  character: [{
+    type: [Schema.Types.ObjectId],
+    ref: 'Character'
+  }],
   difficulty: {
     type: String,
     required: true
