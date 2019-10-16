@@ -8,9 +8,9 @@ const GameSchema = new Schema({
     type: String,
     required: true
   },
-  characters: {
+  characters: [{
     type: Array
-  },
+  }],
   platforms: [{
     type: Array,
     required: true
