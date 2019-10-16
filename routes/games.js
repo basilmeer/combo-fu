@@ -33,11 +33,28 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   const newGame = new Game({
     title: req.body.title,
-    platforms: req.body.platforms
+    platforms: req.body.platforms,
+    characters: req.body.characters
   });
   newGame.save()
   .then(game => res.json(game))
   .catch(err => res.json(err));
+});
+
+/**
+* @route PUT /api/games/:id
+* @desc Update a saved game
+* @access Public
+*/
+router.post('/:id', (req, res) => {
+  const updatedGame = new Game({
+    title: req.body.title,
+    platforms: req.body.platforms,
+    characters: req.body.characters
+  });
+  Game.findOneAndUpdate({ _id: req.params.id }, updatedCombo, { new: true })
+  .then(game => res.json({ "status": true, "updatedGame": game }))
+  .catch(err => res.json({ "status": false, "errors": err }));
 });
 
 module.exports = router;
