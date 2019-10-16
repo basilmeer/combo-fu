@@ -101,7 +101,7 @@ class DBFZInputDisplay extends Component {
       <ul className="cf-combo-string">
         {
           commandList.map((command, index) => {
-            return <li>{handleInputDisplay(command, index)}</li>;
+            return <li key={index}>{handleInputDisplay(command, index)}</li>;
           })
         }
       </ul>
