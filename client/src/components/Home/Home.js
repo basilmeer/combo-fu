@@ -1,6 +1,5 @@
 import React from 'react';
 import { H1, H2, Classes } from '@blueprintjs/core';
-import InputDisplay from '../DBFZ/InputDisplay';
 
 function Home() {
   return (
@@ -18,11 +17,6 @@ function Home() {
         It's super simple to sign up and get started! With CF's input notation, you get to automatically decrypt your inputs for the laymen by having them transformed
         into arrows and buttons which makes your combos visually easier to comprehend. And if you're someone like me, easier for you yourself to read on the fly too!
       </p>
-      <br/>
-      <p>2M>M>9M>L>L>2H</p>
-      <InputDisplay input="2M>M>9M>L>L>2H" />
-      <br/>
-      <InputDisplay input="2M>M>9M>LL>2H>MLL>2H>9ML>236L" />
     </div>
   );
 }
