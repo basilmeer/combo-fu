@@ -185,10 +185,11 @@ class Combos extends Component {
               labelFor="character-input"
             >
               <HTMLSelect fill={true} onChange={this.handleCharacterSelectChange}>
-                <option value="Kyo Kusanagi">Kyo Kusanagi</option>
-                <option value="Iori Yagami">Iori Yagami</option>
-                <option value="Clark Still">Clark Still</option>
-                <option value="Geese Howard">Geese Howard</option>
+                {
+                  this.state.characters.map((cur, ind) => 
+                    <option value={this.state.characters[ind].name}>{this.state.characters[ind].name}</option>
+                  )
+                }
               </HTMLSelect>
             </FormGroup>
             <FormGroup
