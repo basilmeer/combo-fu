@@ -3,6 +3,8 @@ import { H1, H2, H5, Button, Classes, Card, Elevation, Dialog, AnchorButton, Int
 
 import DBFZInputDisplay from '../DBFZ/DBFZInputDisplay';
 import DBFZ_CHAR_LIST from '../DBFZ/CharacterList';
+import GokuBlack from '../../images/dbfz/thumbnails/goku_black.png';
+import Broly from '../../images/dbfz/thumbnails/broly.png';
 class Combos extends Component {
   handleOpen = () => {
     const { dialog } = { ...this.state };
@@ -28,6 +30,7 @@ class Combos extends Component {
         "_id": "5ce3b099844ea74618b26281",
         "title": "Get rekt Kori",
         "character": "Goku Black",
+        "image": GokuBlack,
         "difficulty": "Easy",
         "combo": "8>214L>2H>MLL>236L",
         "damage": "231",
@@ -41,6 +44,7 @@ class Combos extends Component {
         "_id": "5ce3b099844ea74618b26281",
         "title": "Basic Air Launcher",
         "character": "Goku Black",
+        "image": GokuBlack,
         "difficulty": "Easy",
         "combo": "2M>M>9>MLL>2HH>MLL>9>ML>236L",
         "damage": "631",
@@ -54,6 +58,7 @@ class Combos extends Component {
         "_id": "5ce3b099844ea74618b26281",
         "title": "Fireball",
         "character": "Broly",
+        "image": Broly,
         "difficulty": "Easy",
         "combo": "236L",
         "damage": "30",
@@ -141,11 +146,13 @@ class Combos extends Component {
           {
             this.state.combos.map((cur, ind, arr) =>
             <Card interactive={true} elevation={Elevation.TWO} key={ind}>
-              {/* <div className="card-img-top">
-                <img src={DBFZHeader} alt="Dragon Ball FighterZ" />
-              </div> */}
               <div className="card-body">
-                <H5><a href="#">{this.state.combos[ind].title + " (" + this.state.combos[ind].character + ")"}</a></H5>
+                <div className="combo-heading">
+                  <img className="character-thumbnail" src={this.state.combos[ind].image} alt={this.state.combos[ind].character} />
+                  <H5>
+                    <a href="#">{this.state.combos[ind].title + " (" + this.state.combos[ind].character + ")"}</a>
+                  </H5>
+                </div>
                 <Tag className="combo-tags">{this.state.combos[ind].game}</Tag>
                 <Tag className="combo-tags">{this.state.combos[ind].difficulty}</Tag>
                 <Tag className="combo-tags">{this.state.combos[ind].damage} DMG</Tag>
