@@ -93,9 +93,8 @@ const handleInputDisplay = (command, index) => {
 }
 
 // This component will take an input like 2M>M>9M>L>L>2H and return the correct visual inputs
-class InputDisplay extends Component {
+class DBFZInputDisplay extends Component {
   render() {
-    // let commandList = this.props.input.split('>').join('').split(/([A-Z])/).filter((el) => el !== '');
     let commandList = this.props.input.split(/([>A-Z])/).filter((el) => el !== '');
 
     return(
@@ -110,4 +109,4 @@ class InputDisplay extends Component {
   }
 }
 
-export default InputDisplay;
+export default DBFZInputDisplay;
