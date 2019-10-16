@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { H1, H2, H5, Button, Classes, Card, Elevation, Dialog, AnchorButton, Intent, FormGroup, InputGroup, TextArea, Tag, HTMLSelect } from '@blueprintjs/core';
+import { H2, Button, Classes, Dialog, AnchorButton, Intent, FormGroup, InputGroup, TextArea, HTMLSelect } from '@blueprintjs/core';
 
 import DBFZInputDisplay from '../DBFZ/DBFZInputDisplay';
 import DBFZ_CHAR_LIST from '../DBFZ/CharacterList';
 import GokuBlack from '../../images/dbfz/thumbnails/goku_black.png';
 import Broly from '../../images/dbfz/thumbnails/broly.png';
+import ComboItem from './ComboItem';
+
 class Combos extends Component {
   handleOpen = () => {
     const { dialog } = { ...this.state };
@@ -144,27 +146,8 @@ class Combos extends Component {
         </div>
         <div className="combo-cards">
           {
-            this.state.combos.map((cur, ind, arr) =>
-            <Card interactive={true} elevation={Elevation.TWO} key={ind}>
-              <div className="card-body">
-                <div className="combo-heading">
-                  <img className="character-thumbnail" src={this.state.combos[ind].image} alt={this.state.combos[ind].character} />
-                  <H5>
-                    <a href="#">{this.state.combos[ind].title + " (" + this.state.combos[ind].character + ")"}</a>
-                  </H5>
-                </div>
-                <Tag className="combo-tags">{this.state.combos[ind].game}</Tag>
-                <Tag className="combo-tags">{this.state.combos[ind].difficulty}</Tag>
-                <Tag className="combo-tags">{this.state.combos[ind].damage} DMG</Tag>
-                <p><DBFZInputDisplay input={this.state.combos[ind].combo} /></p>
-                <small>{this.state.combos[ind].posted_by}</small>
-              </div>
-              <div className="card-footer">
-                <AnchorButton className="card-footer-action" minimal={true} href="#">
-                  See More
-                </AnchorButton>
-              </div>
-            </Card>            
+            this.state.combos.map((combo, i) =>
+              <ComboItem key={i} {...combo} />
             )
           }
         </div>
@@ -196,8 +179,8 @@ class Combos extends Component {
             >
               <HTMLSelect fill={true} onChange={this.handleCharacterSelectChange}>
                 {
-                  this.state.characters.map((cur, ind) => 
-                    <option value={this.state.characters[ind].name}>{this.state.characters[ind].name}</option>
+                  this.state.characters.map((character, i) => 
+                    <option key={i} value={this.state.characters[i].name}>{this.state.characters[i].name}</option>
                   )
                 }
               </HTMLSelect>
