@@ -31,7 +31,7 @@ import Trunks from '../../images/dbfz/thumbnails/trunks.png';
 import VegetaBase from '../../images/dbfz/thumbnails/vegeta_base.png';
 import VegetaSS from '../../images/dbfz/thumbnails/vegeta_ss.png';
 import VegetaSSGSS from '../../images/dbfz/thumbnails/vegeta_ssgss.png';
-import Vegito_SSGSS from '../../images/dbfz/thumbnails/vegito_ssgss.png';
+import VegitoSSGSS from '../../images/dbfz/thumbnails/vegito_ssgss.png';
 import Videl from '../../images/dbfz/thumbnails/videl.png';
 import Yamcha from '../../images/dbfz/thumbnails/yamcha.png';
 import ZamasuFused from '../../images/dbfz/thumbnails/zamasu_fused.png';
@@ -372,7 +372,7 @@ const DBFZ_CHAR_LIST = [
     health: "10000",
     role: "Point",
     game: "Dragon Ball FighterZ",
-    image: Vegito_SSGSS,
+    image: VegitoSSGSS,
     movelist: [],
     posted_by: "Bagul",
     posted_on: "2019-08-17T11:59:09.489Z"
