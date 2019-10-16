@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { H1, H2, H5, Button, Classes, Card, Elevation, Dialog, AnchorButton, Intent, FormGroup, InputGroup, TextArea, HTMLSelect } from '@blueprintjs/core';
+import { H1, H2, H5, Button, Classes, Card, Elevation, Dialog, AnchorButton, Intent, FormGroup, InputGroup, TextArea, Tag, HTMLSelect } from '@blueprintjs/core';
 
-import InputDisplay from '../DBFZ/InputDisplay';
-
+import DBFZInputDisplay from '../DBFZ/DBFZInputDisplay';
+import DBFZ_CHAR_LIST from '../DBFZ/CharacterList';
 class Combos extends Component {
   handleOpen = () => {
     const { dialog } = { ...this.state };
@@ -17,15 +17,21 @@ class Combos extends Component {
     this.setState({ dialog: currentState });
   };
 
+  /* TODO:
+      -- Remove the hardcoded state
+  */
+  
   state = {
     combos: [
       {
         "posted_by": "Baghlol",
         "_id": "5ce3b099844ea74618b26281",
-        "title": "Fireball",
-        "character": "Iori Yagami",
-        "combo": "qcf+C",
-        "game": "King of Fighters XIV",
+        "title": "Get rekt Kori",
+        "character": "Goku Black",
+        "difficulty": "Easy",
+        "combo": "8>214L>2H>MLL>236L",
+        "damage": "231",
+        "game": "Dragon Ball FighterZ",
         "postedOn": "2019-05-21T08:02:33.608Z",
         "__v": 0,
         "posted_on": "2019-08-17T11:59:09.489Z"
@@ -33,10 +39,12 @@ class Combos extends Component {
       {
         "posted_by": "Baghlol",
         "_id": "5ce3b099844ea74618b26281",
-        "title": "Fireball",
-        "character": "Kyo Kusanagi",
-        "combo": "qcf+C",
-        "game": "King of Fighters XIV",
+        "title": "Basic Air Launcher",
+        "character": "Goku Black",
+        "difficulty": "Easy",
+        "combo": "2M>M>9>MLL>2HH>MLL>9>ML>236L",
+        "damage": "631",
+        "game": "Dragon Ball FighterZ",
         "postedOn": "2019-05-21T08:02:33.608Z",
         "__v": 0,
         "posted_on": "2019-08-17T11:59:09.489Z"
@@ -46,13 +54,16 @@ class Combos extends Component {
         "_id": "5ce3b099844ea74618b26281",
         "title": "Fireball",
         "character": "Broly",
-        "combo": "qcf+A",
+        "difficulty": "Easy",
+        "combo": "236L",
+        "damage": "30",
         "game": "Dragon Ball FighterZ",
         "postedOn": "2019-05-21T08:02:33.608Z",
         "__v": 0,
         "posted_on": "2019-08-17T11:59:09.489Z"
       }
     ],
+    characters: DBFZ_CHAR_LIST,
     dialog: {
       autoFocus: true,
       canEscapeKeyClose: true,
@@ -68,7 +79,8 @@ class Combos extends Component {
       "title": "",
       "game": "",
       "character": "",
-      "combo": ""
+      "combo": "",
+      "difficulty": ""
     }
   };
   
@@ -110,6 +122,13 @@ class Combos extends Component {
     currentState.combo = e.target.value;
     this.setState({ newCombo: currentState });
   }
+
+  handleDifficultySelectChange = (e) => {
+    const { newCombo } = {...this.state};
+    const currentState = newCombo;
+    currentState.difficulty = e.target.value;
+    this.setState({ newCombo: currentState });
+  }
   
   render() {
     return(
@@ -118,16 +137,27 @@ class Combos extends Component {
           <H2>Combos</H2>
           <Button className={Classes.PRIMARY} onClick={this.handleOpen}>Add new combo</Button>
         </div>
-        {
-          this.state.combos.map((cur, ind, arr) =>
-          <Card interactive={true} elevation={Elevation.TWO} key={ind}>
-          <H5><a href="#">{this.state.combos[ind].title + " (" + this.state.combos[ind].character + ")"}</a></H5>
-            <small>{this.state.combos[ind].posted_by}</small>
-            <p>{this.state.combos[ind].game}</p>
-            <p>{this.state.combos[ind].combo}</p>
-          </Card>            
-          )
-        }
+        <div className="combo-cards">
+          {
+            this.state.combos.map((cur, ind, arr) =>
+            <Card interactive={true} elevation={Elevation.TWO} key={ind}>
+              {/* <div className="card-img-top">
+                <img src={DBFZHeader} alt="Dragon Ball FighterZ" />
+              </div> */}
+              <div className="card-body">
+                <H5><a href="#">{this.state.combos[ind].title + " (" + this.state.combos[ind].character + ")"}</a></H5>
+                <Tag className="combo-tags">{this.state.combos[ind].game}</Tag>
+                <Tag className="combo-tags">{this.state.combos[ind].difficulty}</Tag>
+                <p><DBFZInputDisplay input={this.state.combos[ind].combo} /></p>
+                <small>{this.state.combos[ind].posted_by}</small>
+              </div>
+              <div className="card-footer">
+
+              </div>
+            </Card>            
+            )
+          }
+        </div>
         <Dialog {...this.state.dialog}>
           <div className={Classes.DIALOG_BODY}>
             <p>
@@ -146,9 +176,6 @@ class Combos extends Component {
               labelFor="game-input"
             >
               <HTMLSelect fill={true} onChange={this.handleGameSelectChange}>
-                <option value="King of Fighters XIV">King of Fighters XIV</option>
-                <option value="Tekken 7">Tekken 7</option>
-                <option value="Street Fighter V">Street Fighter V</option>
                 <option value="Dragon Ball FighterZ">Dragon Ball FighterZ</option>
               </HTMLSelect>
             </FormGroup>
@@ -165,6 +192,18 @@ class Combos extends Component {
               </HTMLSelect>
             </FormGroup>
             <FormGroup
+              helperText="Select the appropriate difficulty."
+              label="Difficulty"
+              labelFor="difficulty"
+            >
+              <HTMLSelect fill={true} onChange={this.handleDifficultySelectChange}>
+                <option value="Easy">Easy</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Hard">Hard</option>
+                <option value="Very Hard">Very Hard</option>
+              </HTMLSelect>
+            </FormGroup>
+            <FormGroup
               helperText="e.g. qcf+qcb+hp"
               label="Combo Input"
               labelFor="text-input"
@@ -172,13 +211,18 @@ class Combos extends Component {
               <TextArea id="combo-input" growVertically={true} large={true} fill={true} onChange={this.handleComboChange} value={this.state.newCombo.combo} />
             </FormGroup>
             <div className="combo-preview">
-              <InputDisplay input={this.state.newCombo.combo} />
+              <DBFZInputDisplay input={this.state.newCombo.combo} />
             </div>
           </div>
           <div className={Classes.DIALOG_FOOTER}>
-            <AnchorButton intent={Intent.PRIMARY} href="#">
-              Close
-            </AnchorButton>
+            <div className={Classes.DIALOG_FOOTER_ACTIONS}>
+              <AnchorButton intent={Intent.NONE} href="#">
+                Close
+              </AnchorButton>
+              <AnchorButton intent={Intent.PRIMARY} href="#">
+                Save
+              </AnchorButton>
+            </div>
           </div>
         </Dialog>
       </div>
