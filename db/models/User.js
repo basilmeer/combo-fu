@@ -17,6 +17,20 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  discord: {
+    type: String
+  },
+  platforms: [{
+    type: Array
+  }],
+  posted_combos: [{
+    type: [Schema.Types.ObjectId],
+    ref: 'Combo'
+  }],
+  saved_combos: [{
+    type: [Schema.Types.ObjectId],
+    ref: 'Combo'
+  }],
   created_at: {
     type: Date,
     default: Date.now

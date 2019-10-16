@@ -12,7 +12,7 @@ const ComboSchema = new Schema({
     type: String,
     required: true
   },
-  character_image: {
+  difficulty: {
     type: String,
     required: true
   },
@@ -20,7 +20,10 @@ const ComboSchema = new Schema({
     type: String,
     required: true
   },
-  game: {
+  description: {
+    type: String
+  },
+  damage: {
     type: String,
     required: true
   },
