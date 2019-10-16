@@ -148,11 +148,14 @@ class Combos extends Component {
                 <H5><a href="#">{this.state.combos[ind].title + " (" + this.state.combos[ind].character + ")"}</a></H5>
                 <Tag className="combo-tags">{this.state.combos[ind].game}</Tag>
                 <Tag className="combo-tags">{this.state.combos[ind].difficulty}</Tag>
+                <Tag className="combo-tags">{this.state.combos[ind].damage} DMG</Tag>
                 <p><DBFZInputDisplay input={this.state.combos[ind].combo} /></p>
                 <small>{this.state.combos[ind].posted_by}</small>
               </div>
               <div className="card-footer">
-
+                <AnchorButton className="card-footer-action" minimal={true} href="#">
+                  See More
+                </AnchorButton>
               </div>
             </Card>            
             )
@@ -205,7 +208,7 @@ class Combos extends Component {
               </HTMLSelect>
             </FormGroup>
             <FormGroup
-              helperText="e.g. qcf+qcb+hp"
+              helperText="e.g. 2HH>MLLH"
               label="Combo Input"
               labelFor="text-input"
             >

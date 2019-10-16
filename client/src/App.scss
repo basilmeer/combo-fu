@@ -68,8 +68,17 @@ body {
       .combo-tags {
         margin-right: 10px;
       }
-      // min-width: 400px;
-      // max-width: 450px;
+    }
+    .card-footer {
+      .card-footer-action {
+        width: 100%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: rgba(167, 182, 194, 0.3);
+        &:hover {
+          background-color: rgba(167, 182, 194, 0.4);
+        }
+      }
     }
   }
 }
