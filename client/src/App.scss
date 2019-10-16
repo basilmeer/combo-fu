@@ -4,7 +4,7 @@ body {
 }
 
 .App {
-  padding: 0 350px;
+  padding: 0.8rem 5rem;
 }
 
 .container {
@@ -44,6 +44,31 @@ body {
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 2rem;
+}
+
+.combo-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .bp3-card {
+    margin-bottom: 20px;
+    padding: 0;
+    .card-img-top {
+      height: 130px;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+    }
+    .card-body {
+      padding: 20px;
+      .combo-tags {
+        margin-right: 10px;
+      }
+      // min-width: 400px;
+      // max-width: 450px;
+    }
+  }
 }
 
 .cf-combo-string {
