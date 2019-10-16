@@ -5,7 +5,7 @@ import Home from './Home/Home';
 import Login from './Auth/Login';
 import Register from './Auth/Register';
 import Profile from './Profile/Profile';
-import Explore from './Explore/Explore';
+import Settings from './Settings/Settings';
 import Combos from './Combos/Combos';
 
 class Content extends React.Component {
@@ -17,7 +17,7 @@ class Content extends React.Component {
         <Route path="/register/" exact component={Register} />
         <Route path="/combos/" exact component={Combos} />
         <Route path="/profile/" exact component={Profile} />
-        <Route path="/explore/" exact component={Explore} />
+        <Route path="/settings/" exact component={Settings} />
       </div>
     );
   }
