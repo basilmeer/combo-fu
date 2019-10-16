@@ -54,5 +54,6 @@ npm run build:client
 
 ## Credits
 * DragonBallFighterZ Wiki
+* Dustloop
 * LowD (helped out with assorting assets)
 * Kori (helped out with assorting assets)
