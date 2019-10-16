@@ -1,15 +1,15 @@
 import React from 'react';
 import { H2 } from '@blueprintjs/core';
 
-class Explore extends React.Component {
+class Settings extends React.Component {
   render() {
     return(
       <div>
-        <H2>Explore</H2>
+        <H2>Settings</H2>
         
       </div>
     )
   }
 }
 
-export default Explore;
+export default Settings;
