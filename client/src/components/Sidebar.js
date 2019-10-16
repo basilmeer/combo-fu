@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { H2, Menu, MenuDivider, MenuItem, Icon, Intent } from '@blueprintjs/core';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
-class Sidebar extends React.Component {
+class Sidebar extends Component {
   render() {
     return(
       <div className="cf-sidebar">
@@ -18,9 +18,9 @@ class Sidebar extends React.Component {
           <NavLink activeClassName={Intent.PRIMARY} to="/profile/">
             <MenuItem text="Profile" icon="user" />
           </NavLink>
-          <NavLink activeClassName={Intent.PRIMARY} to="/explore/">
+          {/* <NavLink activeClassName={Intent.PRIMARY} to="/explore/">
             <MenuItem text="Explore" icon="geosearch" />
-          </NavLink>
+          </NavLink> */}
           <NavLink activeClassName={Intent.PRIMARY} to="/login/">
             <MenuItem text="Login" icon="log-in" />
           </NavLink>
