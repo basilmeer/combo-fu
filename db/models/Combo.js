@@ -8,11 +8,11 @@ const ComboSchema = new Schema({
     type: String,
     required: true
   },
-  character: {
-    type: String,
-    required: true
-  },
-  character_image: {
+  character: [{
+    type: [Schema.Types.ObjectId],
+    ref: 'Character'
+  }],
+  difficulty: {
     type: String,
     required: true
   },
@@ -20,7 +20,10 @@ const ComboSchema = new Schema({
     type: String,
     required: true
   },
-  game: {
+  description: {
+    type: String
+  },
+  damage: {
     type: String,
     required: true
   },

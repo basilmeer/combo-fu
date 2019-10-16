@@ -9,7 +9,7 @@ class Register extends React.Component {
         <H2>Register</H2>
         <FormGroup
           helperText="No special characters"
-          label="username"
+          label="Username"
           labelFor="text-input"
           labelInfo="(required)"
         >

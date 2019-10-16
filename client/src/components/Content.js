@@ -5,8 +5,9 @@ import Home from './Home/Home';
 import Login from './Auth/Login';
 import Register from './Auth/Register';
 import Profile from './Profile/Profile';
-import Explore from './Explore/Explore';
+import Settings from './Settings/Settings';
 import Combos from './Combos/Combos';
+import ComboPage from './Combos/ComboPage';
 
 class Content extends React.Component {
   render() { 
@@ -16,8 +17,9 @@ class Content extends React.Component {
         <Route path="/login/" exact component={Login} />
         <Route path="/register/" exact component={Register} />
         <Route path="/combos/" exact component={Combos} />
+        <Route path="/combo/:id" exact component={ComboPage} />
         <Route path="/profile/" exact component={Profile} />
-        <Route path="/explore/" exact component={Explore} />
+        <Route path="/settings/" exact component={Settings} />
       </div>
     );
   }
