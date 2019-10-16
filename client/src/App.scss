@@ -3,12 +3,12 @@
 */
 body {
   font-family: "Segoe UI", sans-serif;
-  background: rgba(255, 255, 255, 1);
+  background: rgb(238, 238, 238);
 }
 
-.App {
-  padding: 0.8rem 5rem;
-}
+// .App {
+//   padding: 0.8rem 5rem;
+// }
 
 .container {
   display: flex;
@@ -18,10 +18,11 @@ body {
 .cf-sidebar {
   overflow-y: scroll;
   scrollbar-width: none;
+  background: rgba(255, 255, 255, 1);
   border-right: 1px solid rgb(223, 223, 223);
-  padding: 30px 25px;
+  padding: 30px 30px 30px 80px;
   height: 100vh;
-  min-width: 250px;
+  min-width: 330px;
   .cf-sidebar-title {
     font-size: 20px;
     font-weight: 600;
@@ -30,6 +31,28 @@ body {
   .cf-sidebar-welcome {
     padding: 5px 7px;
     font-style: italic;
+  }
+  .cf-sidebar-nav-menu {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    a {
+      padding: 7px 15px;
+      &:hover {
+        text-decoration: none;
+        background: rgba(167, 182, 194, 0.3);
+      }
+      &.active {
+        background: rgba(167, 182, 194, 0.4);
+        .cf-sidebar-menu-icon {
+          color: #106ba3;
+        }
+      }
+      .cf-sidebar-menu-icon {
+        margin-right: 10px;
+        // color: #8ab2ca;
+      }
+    }
   }
   .bp3-menu {
     padding: 0;
