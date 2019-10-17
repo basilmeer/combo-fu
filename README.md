@@ -2,7 +2,7 @@
 A combo writing app for fighting games. Made with MERN.
 
 ## Links
-* [Demo](https://combo-fu.netlify.com)
+* [Demo](https://combo-fu.herokuapp.com/)
 * [Roadmap](https://trello.com/b/f0MLS2yy/combo-fu-roadmap)
 * [Issue Tracker](https://github.com/basilmeer/combo-fu/issues)
 * [Discord](https://discord.gg/mRvY7N5)
