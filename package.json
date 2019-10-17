@@ -2,7 +2,11 @@
   "name": "combo-fu",
   "version": "0.0.1",
   "description": "A combo writing app for fighting games. Made with MERN.",
-  "main": "index.js",
+  "main": "server.js",
+  "engines": {
+    "node": "v12.8.1",
+    "npm": "v6.10.2"
+  },
   "repository": "https://github.com/basilmeer/combo-fu.git",
   "directories": {
     "doc": "docs",
