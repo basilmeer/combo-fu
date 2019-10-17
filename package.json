@@ -15,7 +15,8 @@
     "build:client": "cd client && npm run build",
     "seed:games": "node ./db/seeds/games.js",
     "seed:platforms": "node ./db/seeds/platforms.js",
-    "seed:users": "node ./db/seeds/users.js"
+    "seed:users": "node ./db/seeds/users.js",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "Basil Meer",
   "license": "MIT",

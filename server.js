@@ -38,6 +38,14 @@ app.use('/api/games', games);
 app.use('/api/platforms', platforms);
 app.use('/api/users', users);
 
+if (process.env.NODE_ENV === 'production')  {
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  })
+}
+
 // Set the port
 const PORT = process.env.port || 5000;
 
