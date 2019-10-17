@@ -12,6 +12,7 @@ const combos = require('./routes/combos');
 const games = require('./routes/games');
 const platforms = require('./routes/platforms');
 const users = require('./routes/users');
+const auth = require('./routes/auth');
 
 // Fetch db config
 const db = require('./config/db').mongoURI;
@@ -37,6 +38,7 @@ app.use('/api/combos', combos);
 app.use('/api/games', games);
 app.use('/api/platforms', platforms);
 app.use('/api/users', users);
+app.use('/', auth);
 
 if (process.env.NODE_ENV === 'production')  {
   app.use(express.static('client/build'));
