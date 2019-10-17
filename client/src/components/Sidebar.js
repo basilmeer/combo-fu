@@ -1,36 +1,45 @@
-import React from 'react';
-import { H2, Menu, MenuDivider, MenuItem, Icon, Intent } from '@blueprintjs/core';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
+import React, { Component } from 'react';
+import { Icon } from '@blueprintjs/core';
+import { BrowserRouter as Route, NavLink } from 'react-router-dom';
 
-class Sidebar extends React.Component {
+class Sidebar extends Component {
   render() {
     return(
       <div className="cf-sidebar">
-        <span className="cf-sidebar-title">Combo-Fu</span>
+        <div className="cf-sidebar-title">Combo-Fu</div>
         {/* <MenuDivider /> */}
-        <Menu>
-          <NavLink activeClassName={Intent.PRIMARY} to="/">
-            <MenuItem text="Home" icon="home" />
+        <div className="cf-sidebar-welcome">Hi there, Bagul!</div>
+        <div className="cf-sidebar-nav-menu">
+          <NavLink exact={true} activeClassName="active" to="/">
+            <Icon className="cf-sidebar-menu-icon" icon="home" />
+            Home
           </NavLink>
-          <NavLink activeClassName={Intent.PRIMARY} to="/combos/">
-            <MenuItem text="Combos" icon="comment" />
+          <NavLink exact={true} activeClassName="active" to="/combos/">
+            <Icon className="cf-sidebar-menu-icon" icon="comment" />
+            Combos
           </NavLink>
-          <NavLink activeClassName={Intent.PRIMARY} to="/profile/">
-            <MenuItem text="Profile" icon="user" />
+          {/* Show the following links only when the user is not logged in */}
+          <NavLink exact={true} activeClassName="active" to="/login/">
+            <Icon className="cf-sidebar-menu-icon" icon="log-in" />
+            Login
           </NavLink>
-          <NavLink activeClassName={Intent.PRIMARY} to="/explore/">
-            <MenuItem text="Explore" icon="geosearch" />
+          <NavLink exact={true} activeClassName="active" to="/register/">
+            <Icon className="cf-sidebar-menu-icon" icon="person" />
+            Register
           </NavLink>
-          <NavLink activeClassName={Intent.PRIMARY} to="/login/">
-            <MenuItem text="Login" icon="log-in" />
+          <NavLink exact={true} activeClassName="active" to="/profile/">
+            <Icon className="cf-sidebar-menu-icon" icon="user" />
+            Profile
           </NavLink>
-          <NavLink activeClassName={Intent.PRIMARY} to="/register/">
-            <MenuItem text="Register" icon="person" />
+          <NavLink exact={true} activeClassName="active" to="/settings/">
+            <Icon className="cf-sidebar-menu-icon" icon="cog" />
+            Settings
           </NavLink>
-          <NavLink activeClassName={Intent.PRIMARY} to="/logout/">
-            <MenuItem text="Logout" icon="log-out" />
+          <NavLink exact={true} activeClassName="active" to="/logout/">
+            <Icon className="cf-sidebar-menu-icon" icon="log-out" />
+            Logout
           </NavLink>
-        </Menu>
+        </div>
         <div className="cf-footer-note">&copy; 2019 <a href="https://www.basilmeer.com">Basil Meer</a>. <br />Made with ❤️ for the FGC.</div>
       </div>
     )

@@ -29,4 +29,20 @@ router.post('/', (req, res) => {
     .catch(err => res.json(err));
 });
 
+/**
+* @route PUT /api/platforms/:id
+* @desc Update a saved platform
+* @access Public
+*/
+router.post('/:id', (req, res) => {
+  const updatedPlatform = new Platform({
+    title: req.body.title,
+    platforms: req.body.platforms,
+    characters: req.body.characters
+  });
+  Platform.findOneAndUpdate({ _id: req.params.id }, updatedPlatform, { new: true })
+  .then(platform => res.json({ "status": true, "updatedPlatform": platform }))
+  .catch(err => res.json({ "status": false, "errors": err }));
+});
+
 module.exports = router;

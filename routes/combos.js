@@ -39,8 +39,11 @@ router.post('/', (req, res) => {
   const newCombo = new Combo({
     title: req.body.title,
     character: req.body.character,
+    difficulty: req.body.difficulty,
     combo: req.body.combo,
-    game: req.body.game
+    description: req.body.description,
+    damage: req.body.damage,
+    posted_by: req.body.posted_by
   });
   newCombo.save()
     .then(combo => res.json(combo))
@@ -52,12 +55,16 @@ router.post('/', (req, res) => {
  * @desc Modify a combo
  * @access Public
  */
+
 router.put('/:id', (req, res) => {
   const updatedCombo = {
     title: req.body.title,
     character: req.body.character,
+    difficulty: req.body.difficulty,
     combo: req.body.combo,
-    game: req.body.game
+    description: req.body.description,
+    damage: req.body.damage,
+    posted_by: req.body.posted_by
   };
   Combo.findOneAndUpdate({ _id: req.params.id }, updatedCombo, { new: true })
     .then(combo => res.json({ "status": true, "updatedCombo": combo }))
