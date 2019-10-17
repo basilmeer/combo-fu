@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { H2, FormGroup, InputGroup, Button, Classes } from '@blueprintjs/core';
+import { H2, FormGroup, InputGroup, Button, Classes, Toast, Toaster, Position, Intent } from '@blueprintjs/core';
+import AppToaster from '../AppToaster.js';
 import axios from 'axios';
 
 const initialState = {
@@ -23,6 +24,13 @@ class Signin extends Component {
     this.setState({ ...initialState });
   }
 
+  setCookie = (cookie_name, cookie_value, expiry) => {
+    const date = new Date();
+    date.setTime(date.getTime() + (expiry * 24 * 60 * 60 * 1000));
+    const expires = "expires="+ date.toUTCString();
+    document.cookie = cookie_name + "=" + cookie_value + ";" + expires + ";path=/";
+  }
+
   handleChange = e => {
     const { name, value }= e.target;
     this.setState({ [name]: value });
@@ -34,12 +42,15 @@ class Signin extends Component {
     this.toggleLoading();
     axios.post('http://localhost:5000/login', { email, password })
       .then(res => {
-        this.toggleLoading();
         console.log(res);
+        this.toggleLoading();
+        this.setCookie("token", res.data.token, 1);
+        AppToaster.show({ message: "Welcome back!", intent: Intent.SUCCESS });
       })
       .catch(err => {
-        this.toggleLoading();
         console.log(err);
+        this.toggleLoading();
+        AppToaster.show({ message: "Oops, an error occurred!", intent: Intent.DANGER });
       });
     this.clearState();
   }
@@ -47,6 +58,9 @@ class Signin extends Component {
   render() {
     return (
       <div>
+        <Toaster>
+
+        </Toaster>
         <H2>Login</H2>
         <form onSubmit={async (e) => await this.handleSubmit(e)}>
           <FormGroup
