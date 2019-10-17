@@ -4,8 +4,7 @@ import axios from 'axios';
 
 const initialState = {
   email: "",
-  password: "",
-  loading: false
+  password: ""
 }
 
 class Signin extends Component {
@@ -15,6 +14,11 @@ class Signin extends Component {
     loading: false
   }
 
+  toggleLoading = () => {
+    const status = !this.state.loading;
+    this.setState({ loading: status });
+  }
+  
   clearState = () => {
     this.setState({ ...initialState });
   }
@@ -27,16 +31,15 @@ class Signin extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     let { email, password } = this.state;
-    this.setState({ loading: true });
-    // axios.get('http://localhost:5000/api/users').then(res => console.log(res)).catch(err => console.log(err));
+    this.toggleLoading();
     axios.post('http://localhost:5000/login', { email, password })
       .then(res => {
+        this.toggleLoading();
         console.log(res);
-        this.setState({ loading: false });
       })
       .catch(err => {
+        this.toggleLoading();
         console.log(err);
-        this.setState({ loading: false });
       });
     this.clearState();
   }
