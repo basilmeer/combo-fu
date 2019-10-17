@@ -1,3 +1,5 @@
+require('dotenv').config({ path: '.env' });
+
 module.exports = {
-  "mongoURI": 'mongodb://localhost:27017/combo-fu'
+  "mongoURI": process.env.MONGO_URI
 };
