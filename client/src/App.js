@@ -1,22 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.scss';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import '@blueprintjs/docs-theme/lib/css/docs-theme.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'; 
-import Sidebar from './components/Sidebar';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
+import jwt from 'jsonwebtoken';
 import Content from './components/Content';
+import { SessionProvider } from './components/session-context';
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-      <div className="container">
-        <Sidebar />
-        <Content />
+function authData() {
+  const tokenCookie = decodeURIComponent(document.cookie).split('=')[1];
+  const decodedToken = jwt.decode(tokenCookie);
+  console.log(decodedToken);
+  return decodedToken;
+}
+
+const sessionData = jwt.decode(decodeURIComponent(document.cookie).split('=')[1]);
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      session: authData()
+    }
+  }
+
+  componentDidMount = () => {
+    this.setState({ session: authData() })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <SessionProvider value={sessionData}>
+          <Router>
+            <Switch>
+              <Content />
+            </Switch>
+          </Router>
+        </SessionProvider>
       </div>
-      </Router>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

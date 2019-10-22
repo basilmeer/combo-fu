@@ -61,8 +61,12 @@ body {
 }
 
 .content {
-  padding: 30px 50px;
-  width: 100%;
+  display: flex;
+  .cf-content {
+    flex-direction: column;
+    padding: 30px 50px;
+    width: 100%;
+  }
 }
 
 .page-title {

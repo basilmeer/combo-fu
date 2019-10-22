@@ -1,10 +1,11 @@
 import React from 'react';
 import { H2 } from '@blueprintjs/core';
+import { BrowserRouter as Route, Redirect } from 'react-router-dom';
 
 class Logout extends React.Component {
   render() { 
     return(
-      <H2>You've successfully signed out!</H2>
+      <Redirect to="/" />
     );
   }
 }
