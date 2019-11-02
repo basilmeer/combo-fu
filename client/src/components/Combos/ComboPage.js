@@ -6,7 +6,7 @@ const ComboPage = ({ _id, image, character, game, difficulty, damage, combo, pos
     <Fragment>
       <Sidebar />
       <div className="cf-content container">
-        ComboPage
+        Under Construction
       </div>
     </Fragment>
   )

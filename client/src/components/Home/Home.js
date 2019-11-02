@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
-import { H1, H2, Callout, Classes, Intent } from '@blueprintjs/core';
+import { H1, H2, Callout, Classes, Intent, Tag } from '@blueprintjs/core';
 import Sidebar from '../Sidebar';
-import withAuth from '../withAuth';
 
 function Home() {
   return (
@@ -10,13 +9,14 @@ function Home() {
         <div className="cf-content container">
           <H1 className="page-title">Combo-Fu</H1>
           <Callout intent={Intent.WARNING} title="This is an experimental build of the app">
-            Combo-Fu is currently in alpha and a lot of the features are currently not working. The current expected launch date for the beta launch is <strong>19 October, 2019</strong>. Though, so far in this relatively broken and empty version of the app, you can:
+            Combo-Fu is currently in alpha and a lot of the features are currently not working. The current expected launch date for the beta launch is <strike><strong>19 October, 2019</strong></strike> <strong>3 October, 2019</strong>. So far in this relatively broken and empty version of the app, you can:
             <ul>
               <li>Check how combos are visually represented in the 'Combos' page</li>
               <li>Test the 'New Combo' form's live DBFZ input parser (it uses the numpad notation)</li>
               <li>Get a sneak peek on the different pages, although they're broken</li>
+              <li>Create an account and save combos <Tag intent={Intent.PRIMARY} minimal={true}>new</Tag></li>
             </ul>
-            By the launch date, users will be able to sign up/sign in, save combos and browse the currently saved DBFZ combos. The following week after that, I'll be adding the movelists for all the characters and then the framedata along with a bunch of bug fixing. For issues, you can go <a href="https://github.com/basilmeer/combo-fu/issues">here</a> and to see the roadmap, you can go <a href="https://trello.com/b/f0MLS2yy/combo-fu-roadmap">here</a>. Join the rather empty <a href="https://discord.gg/mRvY7N5">Discord</a> to report live issues to me. Thank you for checking out Combo-Fu!
+            The following week after this, I'll probably be running the app through a couple of tests and then work on adding the movelists for currently added characters and then the framedata along with a bunch of bug fixing. For issues, you can go <a href="https://github.com/basilmeer/combo-fu/issues">here</a> and to see the roadmap, you can go <a href="https://trello.com/b/f0MLS2yy/combo-fu-roadmap">here</a>. Join the rather empty <a href="https://discord.gg/mRvY7N5">Discord</a> to report live issues to me. Thank you for checking out Combo-Fu!
           </Callout>
           <H2 style={{ marginTop:'20px' }}>Welcome to Combo-Fu!</H2>
           <p className={Classes.RUNNING_TEXT}>

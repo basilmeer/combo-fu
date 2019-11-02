@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Icon, Intent } from '@blueprintjs/core';
-import { BrowserRouter as Route, NavLink, Redirect } from 'react-router-dom';
+import { BrowserRouter as Route, NavLink } from 'react-router-dom';
 import AppToaster from './AppToaster';
 import { SessionConsumer } from './session-context';
 
