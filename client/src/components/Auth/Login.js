@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { H2, FormGroup, InputGroup, Button, Classes, Toast, Toaster, Position, Intent } from '@blueprintjs/core';
+import { H2, FormGroup, InputGroup, Button, Classes, Intent } from '@blueprintjs/core';
 import AppToaster from '../AppToaster.js';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
@@ -12,10 +12,6 @@ const initialState = {
 }
 
 class Signin extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
   state = {
     email: "",
     password: "",
@@ -39,7 +35,7 @@ class Signin extends Component {
   }
 
   handleChange = e => {
-    const { name, value }= e.target;
+    const { name, value } = e.target;
     this.setState({ [name]: value });
   }
 
@@ -49,7 +45,7 @@ class Signin extends Component {
     this.toggleLoading();
     axios.post('http://localhost:5000/login', { email, password })
       .then(res => {
-        console.log(res);
+        // console.log(res);
         this.toggleLoading();
         this.setCookie("token", res.data.token, 1);
         updateSession(jwt.decode(decodeURIComponent(document.cookie).split('=')[1]));
