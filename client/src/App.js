@@ -10,7 +10,6 @@ import { SessionProvider } from './components/session-context';
 function authData() {
   const tokenCookie = decodeURIComponent(document.cookie).split('=')[1];
   const decodedToken = jwt.decode(tokenCookie);
-  console.log(decodedToken);
   return decodedToken;
 }
 
