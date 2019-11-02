@@ -31,14 +31,34 @@ router.get('/:id', (req, res) => {
  * @desc Save a new user
  * @access Public
  */
-router.post('/', (req, res) => {
+/* TODO:
+    -- Fix the messy async implementation
+*/
+router.post('/', async (req, res) => {
+  let { username, 
+    name, 
+    email, 
+    password, 
+    discord, 
+    platforms, 
+    posted_combos, 
+    saved_combos } = req.body;
+
+  const user = await User.findOne({ username });
+  
+  if (user) throw new Error('User already exists!');
+  
   const newUser = new User({
-    username: req.body.username,
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password
+    username,
+    name,
+    email,
+    password,
+    discord,
+    platforms,
+    posted_combos,
+    saved_combos
   });
-  User.save()
+  await newUser.save()
     .then(user => res.json(user))
     .catch(err => res.json(err));
 });

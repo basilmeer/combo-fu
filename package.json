@@ -18,6 +18,7 @@
     "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\"",
     "build:client": "cd client && npm run build",
     "seed:games": "node ./db/seeds/games.js",
+    "seed:characters": "node ./db/seeds/characters.js",
     "seed:platforms": "node ./db/seeds/platforms.js",
     "seed:users": "node ./db/seeds/users.js",
     "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
@@ -25,6 +26,7 @@
   "author": "Basil Meer",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "concurrently": "^5.0.0",

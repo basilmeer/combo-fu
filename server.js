@@ -5,13 +5,16 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 
+mongoose.set('useCreateIndex', true);
 require('dotenv').config({ path: '.env' });
 
 // Fetch routes
 const combos = require('./routes/combos');
 const games = require('./routes/games');
+const characters = require('./routes/characters');
 const platforms = require('./routes/platforms');
 const users = require('./routes/users');
+const auth = require('./routes/auth');
 
 // Fetch db config
 const db = require('./config/db').mongoURI;
@@ -31,12 +34,15 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
+app.use(express.static('public'))
 
 // Mask the routes
 app.use('/api/combos', combos);
 app.use('/api/games', games);
+app.use('/api/characters', characters);
 app.use('/api/platforms', platforms);
 app.use('/api/users', users);
+app.use('/', auth);
 
 if (process.env.NODE_ENV === 'production')  {
   app.use(express.static('client/build'));

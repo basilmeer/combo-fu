@@ -10,7 +10,7 @@ const ComboSchema = new Schema({
   },
   character: [{
     type: [Schema.Types.ObjectId],
-    ref: 'Character'
+    ref: 'character'
   }],
   difficulty: {
     type: String,
@@ -24,8 +24,7 @@ const ComboSchema = new Schema({
     type: String
   },
   damage: {
-    type: String,
-    required: true
+    type: String
   },
   posted_by: {
     type: String,

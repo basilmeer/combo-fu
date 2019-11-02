@@ -4,6 +4,7 @@ const router = express.Router();
 
 // Fetch the model
 const Combo = require('../db/models/Combo');
+const Character = require('../db/models/Character');
 
 /**
  * @route GET /api/combos
@@ -12,9 +13,9 @@ const Combo = require('../db/models/Combo');
  */
 
 router.get('/', (req, res) => {
-  Combo.find()
-    .sort({ date: -1 })
-    .then(combos => res.json(combos));
+  Combo.find({}).sort('-posted_on').populate('character')
+    .then(combos => res.json(combos))
+    .catch(err => res.json(err));
 });
 
 /**
