@@ -42,7 +42,10 @@ router.post('/register', async (req, res) => {
 
   const user = await User.findOne({ username });
   
-  if (user) throw new Error('User already exists!');
+  if (user) {
+    res.status(409).json({ error: { status: 409, message: 'User already exists!' }});
+    return false;
+  };
   
   const newUser = new User({
     username,
@@ -54,9 +57,10 @@ router.post('/register', async (req, res) => {
     posted_combos,
     saved_combos
   });
+
   await newUser.save()
     .then(user => res.json({ token: createToken(newUser, process.env.SECRET, "1hr"), user }))
-    .catch(err => res.json(err));
+    .catch(err => res.status(409).json(err));
 });
 
 module.exports = router;
