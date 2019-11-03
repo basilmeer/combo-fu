@@ -16,6 +16,7 @@
     "server": "nodemon server.js",
     "client": "cd client && npm start",
     "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\"",
+    "test": "mocha",
     "build:client": "cd client && npm run build",
     "seed:games": "node ./db/seeds/games.js",
     "seed:characters": "node ./db/seeds/characters.js",
@@ -37,6 +38,9 @@
     "mongoose": "^5.7.7"
   },
   "devDependencies": {
-    "nodemon": "^1.19.4"
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "nodemon": "^1.19.4",
+    "request": "^2.88.0"
   }
 }
