@@ -6,6 +6,13 @@ import jwt from 'jsonwebtoken';
 import Sidebar from '../Sidebar.js';
 import { SessionConsumer } from '../session-context';
 
+/* TODO:
+    -- Rename the auth routes
+    -- Write tests
+    -- Figure out a proper CD/CI flow
+    -- Fix the problems on the live site
+*/
+
 const initialState = {
   email: "",
   password: ""
@@ -43,7 +50,7 @@ class Signin extends Component {
     e.preventDefault();
     let { email, password } = this.state;
     this.toggleLoading();
-    axios.post('/login', { email, password })
+    axios.post('/api/auth/login', { email, password })
       .then(res => {
         // console.log(res);
         this.toggleLoading();
