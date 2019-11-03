@@ -50,7 +50,7 @@ class Signin extends Component {
     e.preventDefault();
     let { email, password } = this.state;
     this.toggleLoading();
-    axios.post('/api/auth/login', { email, password })
+    axios.post('http://localhost:5000/api/auth/login', { email, password })
       .then(res => {
         // console.log(res);
         this.toggleLoading();

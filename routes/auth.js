@@ -12,7 +12,7 @@ const createToken = (user, secret, expiresIn) => {
 }
 
 /**
- * @route POST /login
+ * @route POST /api/auth/login
  * @desc Save a new user
  * @access Public
  */
@@ -24,11 +24,11 @@ router.post('/login', async (req, res) => {
   if (!user) res.json('This user does not exist.');
 
   const isValidPassword = await bcrypt.compare(password, user.password);
-
+  
   if(!isValidPassword) res.status(403).json('Invalid password');
 
   res.json({ token: createToken(user, process.env.SECRET, '1hr') });
-})
+});
 
 router.post('/register', async (req, res) => {
   let { username, 

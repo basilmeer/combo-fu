@@ -138,7 +138,7 @@ class Register extends Component {
     if(isUsernameValid && isEmailValid && isPasswordValid) {
       const { username, name, email, password, confirmPassword, discord } = this.state;
       this.toggleLoading();
-      axios.post('/api/auth/register', { username, name, email, password, confirmPassword, discord })
+      axios.post('http://localhost:5000/api/auth/register', { username, name, email, password, confirmPassword, discord })
         .then(res => {
           console.log(res);
           this.toggleLoading();
