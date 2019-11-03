@@ -255,7 +255,7 @@ class Combos extends Component {
                   <TextArea id="combo-input" growVertically={true} large={true} fill={true} onChange={this.handleComboChange} value={this.state.newCombo.combo} />
                 </FormGroup>
                 <div className="combo-preview">
-                  <DBFZInputDisplay input={this.state.newCombo.combo} />
+                  <DBFZInputDisplay input={this.state.newCombo.combo.toUpperCase()} />
                 </div>
               </div>
               <div className={Classes.DIALOG_FOOTER}>
