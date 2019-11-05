@@ -1,8 +1,5 @@
 /* TEMPORARY SEEDER, DO NOT USE IN PROD */
 const axios = require('axios');
-const path = require('path');
-
-return console.log(__dirname)
 
 const Android16 = '/images/dbfz/thumbnails/android_16.png';
 const Android17 = '/images/dbfz/thumbnails/android_17.png';

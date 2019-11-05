@@ -42,7 +42,7 @@ app.use('/api/games', games);
 app.use('/api/characters', characters);
 app.use('/api/platforms', platforms);
 app.use('/api/users', users);
-app.use('/', auth);
+app.use('/api/auth', auth);
 
 if (process.env.NODE_ENV === 'production')  {
   app.use(express.static('client/build'));

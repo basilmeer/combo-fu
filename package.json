@@ -16,6 +16,7 @@
     "server": "nodemon server.js",
     "client": "cd client && npm start",
     "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\"",
+    "test": "mocha",
     "build:client": "cd client && npm run build",
     "seed:games": "node ./db/seeds/games.js",
     "seed:characters": "node ./db/seeds/characters.js",
@@ -31,12 +32,15 @@
     "body-parser": "^1.19.0",
     "concurrently": "^5.0.0",
     "cors": "^2.8.5",
-    "dotenv": "^8.1.0",
-    "express": "^4.17.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.5.10"
+    "mongoose": "^5.7.7"
   },
   "devDependencies": {
-    "nodemon": "^1.19.0"
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "nodemon": "^1.19.4",
+    "request": "^2.88.0"
   }
 }

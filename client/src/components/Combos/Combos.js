@@ -77,7 +77,7 @@ class Combos extends Component {
     // currentState.character = DBFZ_CHAR_LIST.find(character => character.name === e.target.value);
     // this.setState({ newCombo: currentState });
     this.toggleLoading();
-    axios.get('http://localhost:5000/api/characters')
+    axios.get('/api/characters')
       .then(res => {
         this.setState({ characters: res.data });
         this.setState({ newCombo: {
@@ -118,7 +118,7 @@ class Combos extends Component {
   }
 
   updateStateWithCharacters = () => {
-    axios.get('http://localhost:5000/api/characters')
+    axios.get('/api/characters')
     .then(res => {
       this.setState({ characters: res.data });
       this.setState({ newCombo: {
@@ -134,7 +134,7 @@ class Combos extends Component {
   }
 
   updateStateWithCombos = () => {
-    axios.get('http://localhost:5000/api/combos')
+    axios.get('/api/combos')
       .then(res => this.setState({ combos: res.data }))
       .catch(err => console.log(err));
   }
@@ -143,7 +143,7 @@ class Combos extends Component {
     e.preventDefault();
     const { title, game, character, combo, difficulty } = this.state.newCombo;
     const posted_by = this.props.session.username;
-    axios.post('http://localhost:5000/api/combos', {
+    axios.post('/api/combos', {
       title,
       game,
       character,
@@ -255,7 +255,7 @@ class Combos extends Component {
                   <TextArea id="combo-input" growVertically={true} large={true} fill={true} onChange={this.handleComboChange} value={this.state.newCombo.combo} />
                 </FormGroup>
                 <div className="combo-preview">
-                  <DBFZInputDisplay input={this.state.newCombo.combo} />
+                  <DBFZInputDisplay input={this.state.newCombo.combo.toUpperCase()} />
                 </div>
               </div>
               <div className={Classes.DIALOG_FOOTER}>

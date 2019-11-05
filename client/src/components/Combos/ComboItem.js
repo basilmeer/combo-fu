@@ -10,7 +10,7 @@ const ComboItem = ({ _id, character, title, difficulty, damage, combo }) => {
     <Card interactive={true} elevation={Elevation.TWO}>
       <div className="card-body">
         <div className="combo-heading">
-          <img className="character-thumbnail" src={`http://localhost:5000${image}`} alt={name} />
+          <img className="character-thumbnail" src={image} alt={name} />
           <H5>
             <Link to={`/combo/${_id}`}>
               {title + " (" + name + ")"}
